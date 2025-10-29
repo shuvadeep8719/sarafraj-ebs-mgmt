@@ -66,7 +66,7 @@
                                                     <button class="btn btn-sm btn-outline-danger">
                                                         <i class="fas fa-trash"></i>
                                                     </button> -->
-                                                    <a href="{{ route('customers.show', $customer->id) }}" class="btn btn-sm btn-info" title="View">
+                                                    <a href="{{ route('customers.view', $customer->id) }}" class="btn btn-sm btn-info" title="View">
                                                         <i class="fa fa-eye"></i>
                                                     </a>
 
