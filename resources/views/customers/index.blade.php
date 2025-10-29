@@ -16,10 +16,28 @@
 @push('scripts')
 <script type="text/javascript">
 // Initialize DataTables
-    $('#customerTable').DataTable({
+    $('#customerTable').DataTable({ 
         responsive: true,
         pageLength: 10,
-        order: [[0, 'asc']]
+        lengthMenu: [5, 10, 25, 50],
+        order: [[0, 'asc']],
+        pagingType: 'simple_numbers',
+        // 👇 Polished Bootstrap 5 Layout
+    dom:
+        "<'row mb-3'<'col-sm-6'l><'col-sm-6'f>>" +
+        "<'table-responsive'tr>" +
+        "<'row mt-3'<'col-sm-5'i><'col-sm-7'p>>",
+
+    language: {
+        search: "_INPUT_",
+        searchPlaceholder: "Search...",
+        lengthMenu: "Show _MENU_ entries",
+        info: "Showing _START_ to _END_ of _TOTAL_ entries",
+        paginate: {
+            previous: '&laquo;',
+            next: '&raquo;'
+        }
+    }
     });
 </script>
 @endpush

@@ -9,6 +9,7 @@
                                             <tr>
                                                 <th>SL</th>
                                                 <th>Bank Name</th>
+                                                <th>Aadhar No</th>
                                                 <th>Account No</th>
                                                 <th>Customer Name</th>
                                                 <th>Phone No</th>
@@ -24,6 +25,7 @@
                                             <tr>
                                                 <td>{{ $index + 1 }}</td>
                                                 <td>{{ $bankAccount->bank->name }}</td>
+                                                <td>{{ $customer->aadhaar_no}}</td>
                                                 <td>{{ $bankAccount->account_number }}</td>
                                                 <td>{{ $customer->name }}</td>
                                                 <td>{{ $customer->mobile_no }} / {{ $customer->alternate_no}}</td>
@@ -31,10 +33,12 @@
                                                 <td>
                                                     @if(strtolower($bankAccount->passbook_received) == 'yes' && strtolower($bankAccount->atm_received) == 'yes')
                                                         <span class="badge bg-success">Both Received</span>
+                                                    @elseif(strtolower($bankAccount->passbook_received) == 'no' && strtolower($bankAccount->atm_received) == 'no')    
+                                                        <span class="badge bg-warning">Both Pending</span>
                                                     @elseif(strtolower($bankAccount->atm_received) == 'no')
                                                         <span class="badge bg-warning">ATM Pending</span>
-                                                    @elseif(strtolower($bankAccount->atm_received) == 'yes')
-                                                        <span class="badge bg-warning">ATM Received</span>
+                                                    @elseif(strtolower($bankAccount->passbook_received) == 'no')
+                                                        <span class="badge bg-warning">Passbook Pending</span>
                                                     @endif
                                                 </td>
                                                 <td>

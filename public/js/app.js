@@ -6,11 +6,7 @@ let currentUser = null;
 // Initialize Application
 function initializeApp() {
     // Initialize DataTables
-    $('#customerTable').DataTable({
-        responsive: true,
-        pageLength: 10,
-        order: [[0, 'asc']]
-    });
+
 
     $('#businessTable').DataTable({
         responsive: true,

@@ -27,7 +27,8 @@ class CustomerController extends BaseController
         $customers = Customer::with([
             'bankAccounts.bank',
             'bankAccounts.socialSchemes'])
-                    ->paginate(10);
+                    //->paginate(10);
+                    ->get();
         //dd($customers);
 
         $user = $this->user;
