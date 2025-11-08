@@ -213,6 +213,32 @@ class CustomerController extends BaseController
 
     }
 
+    public function view(Customer $customer)
+    {
+        // Eager load related bank account + bank + social schemes
+        $customer->load([
+            'bankAccounts.bank',
+            'bankAccounts.socialSchemes',
+            'documents'
+        ]);
+        $banks = Bank::pluck('name', 'id');
+
+
+
+        // Get the primary bank account for prefill
+        $bankAccount = $customer->bankAccounts->firstWhere('is_primary', 1);
+
+        // Load all available scheme masters (APY, PMJJBY, PMSBY)
+        $socialSchemes = \App\Models\SocialScheme::all(['id', 'code', 'name']);
+
+        // Map existing pivot data for that bank account
+        $existingSchemes = $bankAccount
+            ? $bankAccount->socialSchemes->keyBy('code') // keyed by APY, PMJJBY, PMSBY
+            : collect();
+
+        return view('customers.view', compact('customer', 'banks', 'socialSchemes', 'existingSchemes'));
+    }
+
     /**
      * Show the form for editing the specified resource.
      */
