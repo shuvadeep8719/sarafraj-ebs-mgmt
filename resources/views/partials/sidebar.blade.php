@@ -13,7 +13,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#" onclick="showPage('business')">
+                                    <a class="nav-link {{ Route::is('business.*') ? 'active' : '' }}" href="{{ route('business.index') }}">
                                         <i class="fas fa-briefcase me-2"></i>Target Business
                                     </a>
                                 </li>
