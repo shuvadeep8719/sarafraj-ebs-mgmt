@@ -7,6 +7,7 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SocialSchemeController;
 use App\Http\Controllers\CustomerDocumentController;
+use App\Http\Controllers\BusinessMasterController;
 
 /*Route::get('/', function () {
     return view('welcome');
@@ -62,7 +63,7 @@ Route::middleware(['auth'])->group(function () {
     //Route::resource('schemes', SocialSchemeController::class);
 
     // Business / Queries / Invoice UI previews
-    Route::get('/business', fn () => view('business.index'))->name('business');
+    Route::resource('business', BusinessMasterController::class);
     //Route::get('/queries', fn () => view('queries.index'))->name('queries');
     //Route::get('/invoice', fn () => view('invoice.index'))->name('invoice');
 
